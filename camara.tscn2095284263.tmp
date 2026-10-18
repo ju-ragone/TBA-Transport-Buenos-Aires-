@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://sn48cdprnp4"]
+
+[ext_resource type="Script" uid="uid://c3ujptv01i64a" path="res://camara_cenital.gd" id="1_o68wd"]
+[ext_resource type="Texture2D" uid="uid://dru4nm0ngqjw7" path="res://Monochrome-1792204453038.png" id="1_ogf87"]
+[ext_resource type="Script" uid="uid://cwykfleguc6ag" path="res://mundo.gd" id="1_pge1n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_platf"]
+albedo_color = Color(0.68544185, 0.7197435, 0.7712161, 1)
+albedo_texture = ExtResource("1_ogf87")
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2h10h"]
+material = SubResource("StandardMaterial3D_platf")
+size = Vector2(3000, 3000)
+
+[node name="Mundo" type="Node3D" unique_id=461967366]
+script = ExtResource("1_pge1n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1751818586]
+transform = Transform3D(0.8660254, -0.43301272, 0.24999999, 0, 0.49999997, 0.86602545, -0.5, -0.75, 0.43301266, 0, 0, 0)
+shadow_bias = 0.0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1521321158]
+
+[node name="MapaFondo" type="MeshInstance3D" parent="." unique_id=1226185538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006017208, 0.022976875, -0.011014938)
+mesh = SubResource("PlaneMesh_2h10h")
+
+[node name="CamaraCenital" type="Camera3D" parent="." unique_id=1135500187]
+far = 30000.0
+script = ExtResource("1_o68wd")
